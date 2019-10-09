@@ -41,7 +41,6 @@ func GenerateKey() (crypto.PrivateKey, crypto.PublicKey, error) {
 func ComputeSharedSecret(priv crypto.PrivateKey, peerPub crypto.PublicKey) ([]byte, error) {
 	priv32 := [keySize]byte{}
 	pub32 := [keySize]byte{}
-
 	// convert keys to bytes (to do math on them)
 	if privBytes, ok := priv.([]byte); ok {
 		copy(priv32[:], privBytes)
@@ -53,7 +52,6 @@ func ComputeSharedSecret(priv crypto.PrivateKey, peerPub crypto.PublicKey) ([]by
 	} else {
 		return nil, errors.New("bad public key type")
 	}
-
 	// compute shared secret
 	shared := [keySize]byte{}
 	curve25519.ScalarMult(&shared, &priv32, &pub32)
