@@ -6,6 +6,9 @@ package ecdh
  * suitable for a wide variety of applications.
  *
  * source: https://cr.yp.to/ecdh.html
+ *
+ * This code has been adapted from https://github.com/aead/ecdh, which
+ * is not being used here due to its use of panic()
  */
 
 import (
